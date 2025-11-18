@@ -1,0 +1,23 @@
+COMPANY_IDENTITY:
+Name: Kapil Chit Funds Private Limited
+Founded: 1981
+Founder: Sri Vaman Rao
+Parent: Kapil Group
+Type: Subsidiary
+
+CORE_MISSION:
+Objective: Promote thrift culture and disciplined saving
+Operation Area: Primarily Karnataka
+Service: Chit fund schemes
+
+TRACK_RECORD:
+Experience: 44 years in business
+Reputation: Trust and transparency
+Customers: Thousands satisfied
+Safety: Zero defaults record
+
+SAVINGS_FEATURES:
+1. Systematic Investment - Flexible monthly plans
+2. Emergency Funds - Quick borrowing option
+3. Wealth Creation - Monthly dividends
+4. Dream Fulfillment - Long-term goal planning

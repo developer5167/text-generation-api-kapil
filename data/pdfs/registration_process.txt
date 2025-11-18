@@ -1,0 +1,31 @@
+REGISTRATION_STEPS:
+
+STEP_1_CHOOSE_METHOD:
+Option A: Online Registration
+  - Visit www.kapilchits.com or download mobile app
+  - Click 'Register Now' and fill digital form
+Option B: Branch Registration  
+  - Visit nearest Kapil Chits branch
+  - Get assistance from customer executive
+
+STEP_2_DOCUMENT_SUBMISSION:
+Required Documents:
+  - Aadhaar Card (Mandatory)
+  - PAN Card (Mandatory) 
+  - Passport Size Photo (2 copies)
+  - Address Proof (Electricity bill/Bank statement)
+  - Income Proof (For plans above ₹25,000)
+
+STEP_3_PLAN_SELECTION:
+- Choose from available chit plans
+- Select investment amount and duration  
+- Understand terms and conditions
+
+STEP_4_PAYMENT:
+- Pay security deposit (first month's installment)
+- Payment methods: Cash, Cheque, Online Transfer
+
+STEP_5_ACTIVATION:
+- Account activated in 2-3 working days
+- Receive welcome kit and login credentials
+- Start monthly payments from next month

@@ -1,0 +1,30 @@
+CHIT_PLANS_AVAILABLE:
+
+MINI_CHIT_PLAN:
+Monthly Investment: ₹5,000
+Duration: 20 months
+Total Value: ₹1,00,000
+Suitable For: Young investors, first-time savers
+
+FAMILY_SECURE_PLAN:  
+Monthly Investment: ₹10,000
+Duration: 25 months
+Total Value: ₹2,50,000
+Suitable For: Working professionals, family planning
+
+GOLD_FUTURE_PLAN:
+Monthly Investment: ₹25,000  
+Duration: 30 months
+Total Value: ₹7,50,000
+Suitable For: High-income professionals, business persons
+
+SENIOR_CITIZEN_PLAN:
+Monthly Investment: ₹15,000
+Duration: 20 months  
+Total Value: ₹3,00,000
+Suitable For: Retirement planning, senior citizens
+
+SUBSCRIPTION_RULES:
+Minimum Plans: 1 plan per person
+Maximum Plans: 3 plans per person
+Security Deposit: First month's installment

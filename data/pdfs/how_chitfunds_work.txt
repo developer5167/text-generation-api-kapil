@@ -1,0 +1,82 @@
+CHITFUND_BASICS:
+
+BASIC_CONCEPT:
+- Definition: Group savings scheme with monthly contributions
+- Participants: Group of subscribers (typically 20-50 members)
+- Duration: Equal to number of members (e.g., 20 members = 20 months)
+- Monthly Collection: Total of all members' contributions
+
+KEY_TERMINOLOGY:
+- Subscriber: Member who joins the chit fund scheme
+- Chit Value: Total monthly collection from all subscribers
+- Prized Subscriber: Member who wins the auction in a month
+- Non-Prized Subscriber: Members who haven't won auction yet
+- Foreman: Chit fund company managing the scheme
+- Dividend: Share of discount distributed to all subscribers
+
+MONTHLY_PROCESS:
+
+STEP_1_CONTRIBUTIONS:
+- Each subscriber pays monthly installment
+- Total collection forms the "chit fund value" or "pot"
+- Example: 20 members × ₹5,000 each = ₹1,00,000 monthly pot
+
+STEP_2_AUCTION:
+- Monthly auction conducted by foreman
+- Subscribers bid for maximum discount on chit value
+- Highest bidder (offering maximum discount) wins prize money
+
+STEP_3_PRIZE_DISTRIBUTION:
+- Winner receives discount-adjusted prize money
+- Example: 30% discount on ₹1,00,000 = ₹70,000 to winner
+- 5% foreman commission deducted from discount
+
+STEP_4_DIVIDEND_DISTRIBUTION:
+- Remaining discount distributed as dividend to all subscribers
+- Example: ₹25,000 remaining ÷ 20 members = ₹1,250 each
+
+STEP_5_NEXT_MONTH:
+- Process repeats monthly until scheme completion
+- Each member gets one opportunity to win auction
+
+DETAILED_EXAMPLE:
+
+EXAMPLE_SCENARIO:
+- Scheme: 20 members, ₹5,000 monthly, 20 months duration
+- Monthly Pot: ₹1,00,000 (20 × ₹5,000)
+- Auction: Ram bids 30% discount (highest bid)
+- Prize Money: ₹1,00,000 - 30% = ₹70,000 to Ram
+- Foreman Commission: 5% of ₹1,00,000 = ₹5,000
+- Dividend Pool: ₹30,000 - ₹5,000 = ₹25,000
+- Each Member Dividend: ₹25,000 ÷ 20 = ₹1,250
+- Next Month Installment: ₹5,000 - ₹1,250 = ₹3,750
+
+FINANCIAL_FLOW:
+
+FOR_PRIZED_SUBSCRIBER:
+- Receives: Large lump sum amount (prize money)
+- Continues: Paying monthly installments
+- Benefit: Access to funds for immediate needs
+
+FOR_NON_PRIZED_SUBSCRIBER:
+- Receives: Monthly dividends from auctions
+- Continues: Saving through monthly contributions
+- Benefit: Regular returns and future prize opportunity
+
+LEGAL_REGULATIONS:
+- Maximum Discount: 40% by law (Chit Funds Act)
+- Foreman Commission: Maximum 5% of chit value
+- Agreement: Legal contract for all subscribers
+- Transparency: Regular statements and audit reports
+
+BIDDING_OPTIONS:
+- Online Bidding: Via website or mobile app
+- Bid Letter: Written bid submission to branch
+- Authorization: Representative bidding with permission
+- Auto-Bid: Pre-set bidding parameters
+
+ADVANTAGES_FOR_SUBSCRIBERS:
+- Savings: Regular disciplined savings
+- Borrowing: Access to funds without formal loans
+- Returns: Dividends from auctions
+- Flexibility: Multiple bidding strategies

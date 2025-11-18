@@ -1,0 +1,18 @@
+CONTACT_CHANNELS:
+Customer Care: 1800-123-4343 (Toll-Free)
+Email: info@kapilchits.com
+Website: www.kapilchits.com
+Mobile App: Available on Play Store & App Store
+
+OFFICE_TIMINGS:
+Days: Monday to Saturday
+Hours: 9:30 AM to 6:30 PM
+Holidays: Sundays and public holidays
+
+BRANCH_NETWORK:
+Total Branches: 25+ across India
+Karnataka: 15 branches
+Other States: 10+ branches
+
+HEAD_OFFICE:
+Address: #123, Kapil Tower, MG Road, Bangalore - 560001

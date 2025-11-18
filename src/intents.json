@@ -1,0 +1,16 @@
+[
+  { "name": "greetings", "examples": ["hi", "hello", "good morning", "who are you", "thank you", "bye"] },
+  { "name": "owner", "examples": ["who is the founder of kapil chits", "who started kapil group"] },
+  { "name": "about_us", "examples": ["tell me about kapil chits", "what is kapil chits"] },
+  { "name": "why_chitfunds", "examples": ["why should I join chit fund", "benefits of chit funds"] },
+  { "name": "why_kapilchits", "examples": ["why choose kapil chits", "why trust kapil chits"] },
+  { "name": "plans_pricing", "examples": ["show me chit plans", "investment options", "pricing of plans"] },
+  { "name": "how_chitfunds_work", "examples": ["how chit fund works", "explain chit fund process"] },
+  { "name": "registration_process", "examples": ["how to register", "joining process"] },
+  { "name": "services_info", "examples": ["what services do you provide", "online services", "digital platform features"] },
+  { "name": "customer_segments", "examples": ["who can join", "eligible customers", "target audience"] },
+  { "name": "contact_info", "examples": ["contact details", "customer care number", "office address"] },
+  { "name": "faqs", "examples": ["what is dividend", "how safe is my money", "default penalty", "auction details"] },
+  { "name": "company_info", "examples": ["why should I choose kapil chits", "main benefit of your schemes"] },
+  { "name": "transactions", "examples": ["show me previous transactions", "show me payment history", "show me payment details","last payments","show me transactions","transaction history","previous payments",""]}
+]
