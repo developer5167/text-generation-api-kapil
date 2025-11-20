@@ -48,7 +48,11 @@ async function detectIntent(question) {
   const intent = await detectIntent(question);
 
   console.log(`\n🔍 Querying knowledge base: ${intent || "general"}.txt\n`);
-
+  if(intent=="subscriber_dues" ){
+    return intent;
+  }else if(intent=="chit_details"){
+    return intent;
+  }
   let results = await collection.query({
     queryTexts: [question],
     nResults: 5,

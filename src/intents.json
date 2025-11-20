@@ -12,5 +12,8 @@
   { "name": "contact_info", "examples": ["contact details", "customer care number", "office address"] },
   { "name": "faqs", "examples": ["what is dividend", "how safe is my money", "default penalty", "auction details"] },
   { "name": "company_info", "examples": ["why should I choose kapil chits", "main benefit of your schemes"] },
-  { "name": "transactions", "examples": ["show me previous transactions", "show me payment history", "show me payment details","last payments","show me transactions","transaction history","previous payments",""]}
+  { "name": "transactions", "examples": ["show me previous transactions", "show me payment history", "show me payment details","last payments","show me transactions","transaction history","previous payments"]},
+  { "name": "subscriber_dues", "examples": ["what are my subscriber dues", "show me my due details", "pending payments","dues details","my outstanding dues","due amounts","subscriber payment dues"] },
+  {"name":"chit_details","examples":["show me my chit details","my chit information","details of my chit"," chit plan details","tell me my chit details","what are my chits","show chits details"] }
 ]
+
