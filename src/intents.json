@@ -14,6 +14,10 @@
   { "name": "company_info", "examples": ["why should I choose kapil chits", "main benefit of your schemes"] },
   { "name": "transactions", "examples": ["show me previous transactions", "show me payment history", "show me payment details","last payments","show me transactions","transaction history","previous payments"]},
   { "name": "subscriber_dues", "examples": ["what are my subscriber dues", "show me my due details", "pending payments","dues details","my outstanding dues","due amounts","subscriber payment dues"] },
-  {"name":"chit_details","examples":["show me my chit details","my chit information","details of my chit"," chit plan details","tell me my chit details","what are my chits","show chits details"] }
+  {"name":"chit_details","examples":["show me my chit details","my chit information","details of my chit"," chit plan details","tell me my chit details","what are my chits","show chits details"] },
+  { "name": "why_chitfunds", "examples": ["what is a chit","tell me about chits","explain chits"] },
+  {"name":"payment_methods","examples":["what payment methods do you accept","how can I pay my dues","payment options available","modes of payment","ways to pay"] },
+  {"name":"do_payment","examples":["i want to make a payment","how do I pay","pay my dues","make a payment","pay my chit","i want to pay for my chit","chit payment"] }
+
 ]
 

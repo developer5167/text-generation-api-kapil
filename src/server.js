@@ -1,19 +1,29 @@
 const express = require("express");
 const cors = require("cors");
 const { queryNatasha } = require("./query");
-const { GetSubscriberdues,GetChitDetails } = require("./controllers/userController");
+const { handleApiIntent } = require("./intentHandlers"); // ✅ New import
+const conversationManager = require('./conversationManager');
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
-// API endpoint for Natasha
+
+function generateUserId(req) {
+  const { mobile } = req.body;
+  const sessionId = req.headers['session-id'] || req.ip;
+  return mobile || `anon-${sessionId}`;
+}
+
+
 app.post("/api/ask-natasha", async (req, res) => {
   try {
     const { message, mobile } = req.body;
     const { authorization } = req.headers;
     const token = authorization && authorization.split(" ")[1];
+
+    const userId = generateUserId(req);
 
     console.log(
       `💬 User asked: ${message} (Mobile: ${mobile}) Authorization:${authorization}`
@@ -25,45 +35,19 @@ app.post("/api/ask-natasha", async (req, res) => {
       });
     }
 
-    const answer = await queryNatasha(message);
+
+    const answer = await queryNatasha(userId, message);
 
     console.log(`🤖 Natasha answered: ${answer}`);
-    if (answer == "subscriber_dues") {
-      if (!mobile || mobile.trim() === "" || token === "" || !token) {
-        res.json({
-          message: message,
-          answer:
-            "Please login with a valid mobile number to fetch your subscriber dues.",
-          timestamp: new Date().toISOString(),
-        });
-        return;
-      }
-      GetSubscriberdues(mobile, token).then((data) => {
-        res.json({
-          message: message,
-          answer: data,
-          timestamp: new Date().toISOString(),
-        });
-      });
-      return;
-    }else if (answer === "chit_details") {
-      if (!mobile || mobile.trim() === "" || token === "" || !token) {
+     if (answer.type === "api_intent") {
+      const apiAnswer = await handleApiIntent(answer.intent, mobile, token,message);
+      conversationManager.addToHistory(userId, message, answer);
 
-        res.json({
-          message: message,
-          answer:     "Please login with a valid mobile number to fetch your chit details.",  
-          timestamp: new Date().toISOString(),
-        });
-        return;
-      }
-      GetChitDetails(mobile, token).then((data) => {
-        res.json({
-          message: message,
-          answer: data,
-          timestamp: new Date().toISOString(),
-        });
+      return res.json({
+        message: message,
+        answer: apiAnswer,
+        timestamp: new Date().toISOString(),
       });
-      return;
     }  else {
       res.json({
         message: message,
@@ -83,6 +67,32 @@ app.post("/api/ask-natasha", async (req, res) => {
   }
 });
 
+app.post("/api/clear-session", (req, res) => {
+  const { userId } = req.body;
+  conversationManager.clearSession(userId);
+  res.json({ status: "Session cleared", userId });
+});
+
+app.get("/api/session-info", (req, res) => {
+  const userId = generateUserId(req);
+  const session = conversationManager.getSession(userId);
+  
+  res.json({
+    userId,
+    historyLength: session.history.length,
+    context: session.context,
+    lastActive: session.lastActive
+  });
+});
+
+// Health check
+app.get("/api/health", (req, res) => {
+  res.json({
+    status: "OK",
+    activeSessions: conversationManager.sessions.size,
+    timestamp: new Date().toISOString()
+  });
+});
 // Health check endpoint
 app.get("/api/health", (req, res) => {
   res.json({

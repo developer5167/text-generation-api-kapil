@@ -16,3 +16,7 @@ Other States: 10+ branches
 
 HEAD_OFFICE:
 Address: #123, Kapil Tower, MG Road, Bangalore - 560001
+
+App Links:
+Android App link: https://play.google.com/store/apps/details?id=kapil.chits&hl=en
+IOS App Link: https://apps.apple.com/in/app/kapil-chits/id1575314897
