@@ -17,7 +17,7 @@
   {"name":"chit_details","examples":["show me my chit details","my chit information","details of my chit"," chit plan details","tell me my chit details","what are my chits","show chits details"] },
   { "name": "why_chitfunds", "examples": ["what is a chit","tell me about chits","explain chits"] },
   {"name":"payment_methods","examples":["what payment methods do you accept","how can I pay my dues","payment options available","modes of payment","ways to pay"] },
-  {"name":"do_payment","examples":["i want to make a payment","how do I pay","pay my dues","make a payment","pay my chit","i want to pay for my chit","chit payment"] }
-
+  {"name":"do_payment","examples":["i want to make a payment","how do I pay","pay my dues","make a payment","pay my chit","i want to pay for my chit","chit payment"] },
+  {"name":"auctions","examples":["when is the next auction","auction schedule","tell me about upcoming auctions","next chit auction date","auction details","my auctions","upcoming auctions"] }
 ]
 

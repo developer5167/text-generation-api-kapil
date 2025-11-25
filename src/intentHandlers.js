@@ -4,8 +4,10 @@ const {
   GetChitDetails,
   DoPayment,
   payDueAmount,
+  findTransactions,
+  findAuctions
 } = require("./controllers/userController");
-const awaitEnabled = require("./enableAwait");
+const configManager = require("./enableAwait");
 // Registry of all API-based intent handlers
 const intentHandlers = {
   subscriber_dues: {
@@ -28,9 +30,46 @@ const intentHandlers = {
   do_payment: {
     requiresAuth: true,
     handler: async (mobile, token, message) => {
-      awaitEnabled.setEnablePaymentAwait(true);
-      console.log("-------------->"+awaitEnabled.getEnablePaymentAwait()); // true or false
+      configManager.setEnablePaymentAwait(true);
       return await DoPayment(mobile, token);
+    },
+    authMessage:
+      "Please login with a valid mobile number to proceed with the payment.",
+  },
+  transactions: {
+    requiresAuth: true,
+    handler: async (mobile, token, message) => {
+      console.log(extractChitNumber(message));
+      if (!validateChitNumber(extractChitNumber(message))) {
+        console.log(validateChitNumber(extractChitNumber(message)));
+        configManager.set('payment.transactions', true);
+        return "To check transactions, please provide the valid group code.";
+      }else{
+        return await findTransactions(extractChitNumber(message), token);
+      }
+    },
+    authMessage:
+      "Please login with a valid mobile number to proceed with the payment.",
+  },
+  findTransactions: {
+    requiresAuth: true,
+    handler: async (mobile, token,message) => {
+      console.log(message);
+      console.log(extractChitNumber(message));
+      if (!validateChitNumber(extractChitNumber(message))) {
+        console.log(validateChitNumber(extractChitNumber(message)));
+        
+        return "To check transactions, please provide the valid group code.";
+      }
+      return await findTransactions(extractChitNumber(message), token);
+    },
+    authMessage:
+      "Please login with a valid mobile number to proceed with the payment.",
+  },
+  auctions: {
+    requiresAuth: true,
+    handler: async (mobile, token,message) => {
+      return await findAuctions(mobile, token);
     },
     authMessage:
       "Please login with a valid mobile number to proceed with the payment.",
@@ -55,7 +94,15 @@ const intentHandlers = {
 
   // Add new intents here - NO CODE CHANGES NEEDED ELSEWHERE
 };
-
+function extractChitNumber(question) {
+  const chitRegex = /[A-Z]{4}\d{2}[A-Z]-\d{2}/;
+  const chitMatch = question.match(chitRegex);
+  return chitMatch ? chitMatch[0] : null;
+}
+function validateChitNumber(chitNumber) {
+  const chitRegex = /^[A-Z]{4}\d{2}[A-Z]-\d{2}$/;
+  return chitRegex.test(chitNumber);
+}
 // Check if intent requires API call
 function isApiIntent(intent) {
   return intentHandlers.hasOwnProperty(intent);
@@ -75,42 +122,7 @@ async function handleApiIntent(intent, mobile, token, message) {
   }
   return await handlerConfig.handler(mobile, token, message);
 }
-function extractChitNumber(message) {
-  const text = message.trim();
 
-  // Enhanced pattern for codes like KSET14F-45, MPL23A-12, etc.
-  // More flexible with optional spaces and case insensitivity
-  const chitPattern = /[A-Z]{2,6}\d{1,4}[A-Z]?-\d{1,3}/gi;
-  const matches = text.match(chitPattern);
-
-  if (matches && matches.length > 0) {
-    return matches[0].toUpperCase(); // Return first match in uppercase
-  }
-
-  // Alternative: Look for "Chit Number:" pattern with better matching
-  const labeledPattern = /chit\s*(?:number|code|id|no\.?)?\s*:?\s*([A-Z0-9-]+)/gi;
-  const labeledMatch = labeledPattern.exec(text);
-  if (labeledMatch && labeledMatch[1]) {
-    return labeledMatch[1].toUpperCase().trim();
-  }
-
-  // Additional pattern: Look for chit numbers in common phrases
-  const commonPhrases = [
-    /chit\s+([A-Z0-9-]+)/gi,
-    /for\s+chit\s+([A-Z0-9-]+)/gi,
-    /pay\s+(?:for\s+)?([A-Z0-9-]+)/gi,
-    /against\s+chit\s+([A-Z0-9-]+)/gi
-  ];
-
-  for (const pattern of commonPhrases) {
-    const match = pattern.exec(text);
-    if (match && match[1] && /[A-Z]/.test(match[1])) {
-      return match[1].toUpperCase().trim();
-    }
-  }
-
-  return null;
-}
 function extractAmount(message) {
   const text = message.trim();
 
