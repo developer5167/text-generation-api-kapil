@@ -63,7 +63,7 @@ const GetChitDetails = async (mobile, token) => {
   return responseBody;     
 };
 const GetAuctionDetails = async (mobile, token) => {
-  const response = await fetch(`${baseUrl}/api/GetSubscriberauctionDetailsAll?Mobileno=${mobile}`,
+  const response = await fetch(`${baseUrl}/api/GetSubscriberauctionDetails?Mobileno=${mobile}`,
     {
         method: 'GET',
         headers: {
@@ -78,6 +78,8 @@ const GetAuctionDetails = async (mobile, token) => {
     return "Im sorry! I couldn't fetch your chit deatils at the moment.";
   }
   const responseBody = await response.json();  
+  console.log(response.body);
+  
   
   return responseBody;     
 };

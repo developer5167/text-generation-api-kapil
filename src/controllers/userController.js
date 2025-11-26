@@ -8,7 +8,7 @@ const configManager = require("../enableAwait");
 
 const GetSubscriberdues = async (mobile, token) => {
     const response = await userService.GetSubscriberdues(mobile, token);
-    const formattedMessage = formatDueDetails(response);
+    const formattedMessage = formatDueDetails(response.slice(0, 1)); // Show only first 3 due details
     return formattedMessage;
 };
 const GetChitDetails = async (mobile, token) => {
@@ -20,11 +20,12 @@ const DoPayment = async (mobile, token) => {
   const duesList = await userService.GetSubscriberdues(mobile, token);
   const formattedMessage = formatForPayChitDue(duesList.slice(0, 1)); // Show only first 1 due
     return formattedMessage;
-};  
+}; 
 const payDueAmount = async (mobile, token,chitNumber,amount) => {
   const duesList = await userService.GetSubscriberdues(mobile, token);
   const findingDue = duesList.find(due => due.pchitno === chitNumber && due.pnetpayable >= amount);
   if (!findingDue) {
+    configManager.setEnablePaymentAwait(false);
     return `Either the chit number ${chitNumber} is invalid or the amount ₹${amount} exceeds the net payable amount. Please check and try again.`;
   }else{
     configManager.setEnablePaymentAwait(false);
@@ -42,11 +43,12 @@ const findTransactions = async (groupcodetickectno, token) => {
 };
 const findAuctions = async (mobile, token) => {
   const duesList = await userService.GetAuctionDetails(mobile, token);
+  console.log(duesList.length);
+  
   if(duesList.length===0){
     return `All caught up!, there are no upcoming auctions at the moment. Please check back later.`;
   }
-  const formattedMessage = 'found auctions'; // Show only first 5 dues
-  return formattedMessage;
+  return duesList;
 };
 module.exports = {
   GetSubscriberdues,

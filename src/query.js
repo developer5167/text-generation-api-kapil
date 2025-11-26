@@ -14,7 +14,7 @@ const { registerSpecialHandler } = require('./specialHandlers');
 const TransactionHandler = require("./transactionsHandler/transactionHandler");
 
 registerSpecialHandler(new PaymentHandler());
-registerSpecialHandler(new TransactionHandler ());
+registerSpecialHandler(new TransactionHandler());
 
 
 function cosineSimilarity(a, b) {

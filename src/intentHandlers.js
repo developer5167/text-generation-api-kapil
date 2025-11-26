@@ -31,7 +31,15 @@ const intentHandlers = {
     requiresAuth: true,
     handler: async (mobile, token, message) => {
       configManager.setEnablePaymentAwait(true);
-      return await DoPayment(mobile, token);
+      if (!extractChitNumber(message) || !extractAmount(message)) {
+        return "To process your payment, please provide the chit number and the amount you wish to pay.";
+      }
+      return await payDueAmount(
+        mobile,
+        token,
+        extractChitNumber(message),
+        extractAmount(message)
+      );
     },
     authMessage:
       "Please login with a valid mobile number to proceed with the payment.",
@@ -58,7 +66,6 @@ const intentHandlers = {
       console.log(extractChitNumber(message));
       if (!validateChitNumber(extractChitNumber(message))) {
         console.log(validateChitNumber(extractChitNumber(message)));
-        
         return "To check transactions, please provide the valid group code.";
       }
       return await findTransactions(extractChitNumber(message), token);
@@ -66,13 +73,14 @@ const intentHandlers = {
     authMessage:
       "Please login with a valid mobile number to proceed with the payment.",
   },
-  auctions: {
+  upcoming_auctions: {
     requiresAuth: true,
     handler: async (mobile, token,message) => {
+      console.log(message);
       return await findAuctions(mobile, token);
     },
     authMessage:
-      "Please login with a valid mobile number to proceed with the payment.",
+      "Please login with a valid mobile number to fetch upcoming auctions.",
   },
   proceed_payment: {
     requiresAuth: true,
@@ -94,10 +102,10 @@ const intentHandlers = {
 
   // Add new intents here - NO CODE CHANGES NEEDED ELSEWHERE
 };
-function extractChitNumber(question) {
-  const chitRegex = /[A-Z]{4}\d{2}[A-Z]-\d{2}/;
-  const chitMatch = question.match(chitRegex);
-  return chitMatch ? chitMatch[0] : null;
+function extractChitNumber(text) {
+  const regex = /\b[A-Z]{2,6}\d{1,4}[A-Z]?-\d{1,3}\b/i;
+  const match = text.match(regex);
+  return match ? match[0].toUpperCase() : null;
 }
 function validateChitNumber(chitNumber) {
   const chitRegex = /^[A-Z]{4}\d{2}[A-Z]-\d{2}$/;

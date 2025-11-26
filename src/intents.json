@@ -18,6 +18,7 @@
   { "name": "why_chitfunds", "examples": ["what is a chit","tell me about chits","explain chits"] },
   {"name":"payment_methods","examples":["what payment methods do you accept","how can I pay my dues","payment options available","modes of payment","ways to pay"] },
   {"name":"do_payment","examples":["i want to make a payment","how do I pay","pay my dues","make a payment","pay my chit","i want to pay for my chit","chit payment"] },
-  {"name":"auctions","examples":["when is the next auction","auction schedule","tell me about upcoming auctions","next chit auction date","auction details","my auctions","upcoming auctions"] }
+  {"name":"upcoming_auctions","examples":["when is the next auction","tell me about upcoming auctions","next chit auction date","upcoming auctions"] },
+  {"name":"applinks","examples":["share app download links","where can I download the app","app download options","get app links","app store links"] }
 ]
 

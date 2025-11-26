@@ -73,9 +73,25 @@ function formatReadableDate(dateString) {
     day: 'numeric'
   });
 }
+const formatAuctionsDetails = (dues) => {
+  let message = "Here are your last auctions:\n\n";
+  dues.forEach((d, index) => {
+    message += `
+Subscriber name: ${d.vchsubscribername}
+Auction Date: ${d.auctiondate}
+Auction Status: ${d.auctionstatus}
+A.Date/Time: ₹${d.auctiondatetime}\n\n
+CLICK HERE TO PLACE BID: ${d.auctionlink}
+
+------------------------------`;} );
+
+message += "\n ";
+return message;
+};
 module.exports = {
   formatDueDetails,
   formatChitDetails
   ,formatForPayChitDue
+  ,formatAuctionsDetails
   ,formatTransactionDetails
 };
