@@ -1,0 +1,162 @@
+2.What is the auction process?
+Collection of Contributions
+
+All subscribers contribute a fixed amount to the chit fund at the start of the month.
+
+This pooled amount is the prize money for that cycle.
+
+Bidding for the Chit Amount
+
+Subscribers who need the money can bid to take the fund.
+
+Each bidder offers a discount, which is the amount they are willing to forego from the total fund.
+
+Winning the Auction
+
+The subscriber offering the highest discount wins the auction for that month.
+
+They receive the remaining fund after deducting the discount.
+
+Distribution of the Discount
+
+The discount amount is distributed equally among all subscribers (except the winner).
+
+This reduces the effective contribution for everyone.
+
+Next Cycle
+
+The process repeats every month until all members have received the chit amount once
+
+
+3.When are auctions conducted?
+Scheduled Auction Date:
+
+Each chit fund has a predefined schedule (usually monthly) for auctions.
+
+The app notifies all subscribers when the auction is about to start.
+
+Digital Bidding:
+
+Subscribers place their bids through the app.
+
+The bid typically indicates the discount or foregone amount they are willing to take from the total chit sum.
+
+Auction Timing:
+
+The auction is conducted at a fixed time within the app on the scheduled date.
+
+Some apps allow a time window for all subscribers to place their bids.
+
+Winner Announcement:
+
+The subscriber who offers the highest discount is selected automatically by the app.
+
+The app then distributes the remaining chit amount to the winner and updates the account balances of all members.
+
+
+
+4.How to bid in auction?
+A).A subscriber can participate in the auction by selecting an amount and clicking “Enter Bid Amount.” Each bid is recorded in the bid history. The auction continues until it reaches completion.
+
+5.What is the minimum bid amount?
+A).The minimum bid amount would then be the chit amount minus the maximum discount allowed.
+Example:
+Chit value: ₹100,000
+Maximum discount allowed: 10% (₹10,000)
+Minimum bid = ₹100,000 – ₹10,000 = ₹90,000
+
+
+6.Explain auction step by step
+A).1. Participation in the Auction
+
+   Only subscribers without any due amount can participate in the auction.
+   If a subscriber has pending dues, they must clear their outstanding amount before being allowed to bid.
+
+   2. Starting the Auction
+   The auction is initiated by the auctioneer.
+   Once started, eligible subscribers can place their bids.
+
+   3. Placing a Bid
+   Subscribers select the bid amount and click the “Enter” button.
+   The bid amount is then recorded in the bid history.
+   Bidding continues in intervals of 5 or 10 minutes, as per the auction rules.
+
+   4. How Bidding Works
+   The bid typically represents a discount on the total chit amount.
+   Example: If the chit amount is ₹100,000 and a subscriber bids ₹10,000, they will receive ₹90,000 (₹100,000 – ₹10,000).
+   The discount amount is distributed among all members as a dividend.
+
+   5. Minimum Bid Amount
+   There is a minimum bid amount to ensure fair participation.
+   This is generally 1% of the chit amount or as specified in the chit agreement.
+   Example: For a ₹100,000 chit, the minimum bid could be ₹1,000.
+
+   6. Final Bidding Rules
+   If no subscriber places a maximum bid, the final bidder gets the chit amount.
+   If all subscribers place maximum bids, the chit is awarded through a lucky draw (spin).
+   The subscriber whose ticket number the spin stops on wins the chit for that month.
+
+
+7.What is the bidding process?
+A)1. Participation Eligibility
+      When the auction starts, all subscribers are shown a "Participate" button.
+      Only subscribers who have cleared all their due amounts are allowed to join the auction.
+      Subscribers with pending dues will see a "Please clear due amount" message and cannot participate until their dues are cleared.
+        
+ 2. Starting the Auction
+     Any eligible subscriber can start the auction.
+     Once the auction is started, all eligible subscribers can click the "Participate" button to enter the bidding.
+     After participation, the auction page is displayed for the subscriber to begin bidding.
+
+
+ 3. Bidding Process
+     Subscribers can either select a bid amount or manually enter an amount.
+     After entering the amount, they click the "Enter" button, and the amount is added to the bid history for transparency.
+     Example Calculation:
+     Chit value = ₹100,000
+      Foreman commission = 5%
+     Maximum discount allowed = 25%
+     Minimum bid amount allowed = ₹5,000
+     Maximum bid amount allowed = ₹25,000
+     Subscribers continue to bid according to the timeline set for that auction.
+      The subscriber who offers the highest acceptable bid (lowest discounted amount) wins the chit for the month.
+
+  4. Special Case: All Maximum Bids
+      If all participating subscribers place the maximum allowable bid, the auction does not conclude in the usual way.
+      In this case, the system automatically redirects to a spin functionality:
+      The auctioneer starts the spin.
+       When the spin stops, the ticket number selected is awarded the chit for that month.
+
+   This process ensures:
+     Only eligible subscribers participate.
+     Bidding is transparent and fair.
+     The chit is awarded either via bidding or, in the case of a tie at maximum bid, through a random spin.
+
+
+8.How are auction dates decided?
+A)Auction schedule mentioned in the chit agreement.
+
+
+9.What happens during auction?
+A)Collection of Bids:
+   All members of the chit (who have subscribed for the month) submit their bids. The bid is essentially the discount they are willing to take on the chit amount.
+   For example, if the chit value is ₹1,00,000, a member might bid ₹5,000, meaning they are willing to take ₹95,000 now and forego ₹5,000, which will be distributed among other members.
+
+Determining the Highest Bid (Lowest Amount Received):
+  The member who bids the highest discount (or lowest amount to be received) wins the auction.
+  The discounted amount is called the auction amount or foreman’s cut, which will be shared among the other members as a dividend.
+
+Distribution of Dividend:
+   The discount amount (e.g., ₹5,000 in the example) is divided equally among all members of the chit except the winner.
+   This reduces the effective contribution of the other members for that month.
+
+Payment to Winner:
+   The winner gets the chit money minus the bid amount immediately.
+   After the auction, normal contributions continue every month until all members have received the chit money once.
+
+Continuation of Chit Cycle:
+The process repeats every month with a new auction until all members get their share.
+
+
+10.Can I bid online?
+A)A subscriber can participate in the chit auction and place bids online through the Kapil Chits mobile app

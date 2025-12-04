@@ -1,0 +1,78 @@
+1.Show my payment history.
+A)Subscriber can view their complete payment history across all platforms, including the web application, subscriber portal, and mobile apps.
+
+  Web Application:
+  ----------------
+    ->Once the subscriber has successfully completed the payment, all relevant payment details will be available under the View Statement (Chit Receipt) and within the Subscriber Statement.
+
+  Subscriber Portal:
+  ------------------
+    ->When the subscriber logs in, their corresponding payment history will automatically appear on the Subscriber details view page  My Chits.
+
+
+  Subscriber App:
+  ---------------
+    ->When the subscriber accesses the app, their relevant payment history is automatically displayed in the Subscriber Chit Details section located on the Transaction Details page.
+
+ Collection App:
+ ---------------
+    ->When the agent accesses the collection app, all associated payment details are automatically displayed in the Transaction View list.
+
+
+
+
+2.My last 3 payments
+A)Subscriber can view their complete payment history across all platforms, including the web application, subscriber portal, and mobile apps.
+
+  
+  
+
+3.When did I pay last month?
+A)Subscribers can review all earlier payment details by navigating to the Previous Paid Installments page located in the Chit Receipt section.
+
+
+4.Payment records
+A)Subscribers can access their payment details in two views—one showing the status before making the due payment and another showing the updated details after the due payment is made.
+
+   Before Due Payment:
+   -------------------
+     ->Subscribers can access all their past payment records by navigating to the Dues History section.
+  
+   After Paid due payments:
+   ------------------------
+     ->Subscribers can review the full history of their completed payments by navigating to the Previous Paid Installments page.
+
+
+
+
+5.My installment history
+A)Subscribers can review the status of their installments, including both paid and pending (non-paid)
+
+
+    Pending Installment(Non-paid):
+    -------------------------------
+      ->Subscribers can view all pending installments, which are presented in the Dues History section.
+
+    Paid Installment:
+    -----------------
+      ->Subscribers can review their complete history of paid installments, which are displayed in the Previous Paid Installments section, Subscriber Statement, and View Statement, Collection Report.
+
+
+
+6.Past payment details
+A)Past completion payment details are need to shown in previous installment paid, subscriber statement & Collection Report.
+
+
+
+7.Payment track record
+A)Subscribers can access all information related to their completed payments, including the Subscriber Statement and Previous Paid Installments.
+
+
+8.All my previous payments
+A)“All My Previous Payments” indicates that the subscriber has completed payment of all previously pending installments.
+
+
+9.Payment timeline.
+A)Monthly contributions: Each subscriber is required to pay a predetermined amount to the chit fund on a monthly basis.
+  Monthly auction: A reverse auction is held every month to determine the winner of the lump sum.
+  Bidding process: Subscribers bid on the amount of the prize money they are willing to take. The subscriber who bids the lowest amount wins.

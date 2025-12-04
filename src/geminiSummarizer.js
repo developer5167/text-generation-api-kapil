@@ -89,7 +89,7 @@ class GeminiSummarizer {
       const model = this.genAI.getGenerativeModel({ 
         model: this.modelName,
         generationConfig: {
-          maxOutputTokens: 250,
+          maxOutputTokens: 150,
           temperature: 0.3,
         }
       });

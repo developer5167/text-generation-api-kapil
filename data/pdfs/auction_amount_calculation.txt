@@ -1,0 +1,75 @@
+1.How much will I get if I win auction?
+A)   
+     Chit Value : 500000 
+     Chit Period : 20 months 
+     Foreman Commission : 5% 
+     Max Discount : 25%
+
+Max Discount = 25% * 500000 = 125000
+
+Foreman Commission = 5% of chit value
+
+       Foreman Commission = Chit Value * 5%
+                          = 500000 * 5% = 25000
+
+Amount Received = 500000 - 125000 - 25000
+                = 350000
+
+
+
+2.What is the net amount after commission?
+A) 
+     Net Amount Payable to Prize Winner
+      
+        Net Amount = Chit Value - Discount - Foreman Commission
+                   = 500000 - 125000 - 25000
+                   = 350000
+
+   
+
+   Monthly Subscription:
+
+       Subscription : 500000/20 = 25000
+
+
+    Dividend Distribution:
+        Total Discount = 125000
+        Foreman Commission = 25000
+
+
+      Balance for distribution:
+
+              125000 - 25000 = 100000
+
+      Dividend per member:
+
+            100000/20 = 5000
+
+   Net Due Amount (Monthly Payment After Winning):
+
+          Net Due = Subscription - Dividend 
+                  = 25000 - 5000
+                  = 20000 per month
+
+
+
+
+
+3.How much dividend will I get?
+A)Chit Value : 500000 
+  Chit Period : 20 months 
+  Bid amount : 75000 
+  Foreman Commission : 5%
+
+    Amount for Dividend = 75000 - 25000 = 50000
+
+    Dividend  = 50000/20 = 2500
+
+
+
+4.Prize money estimation.
+A)The subscriber can be estimated after lifting the chit based on the bid amount.
+
+    Prized Money = Chit Value - Bid Amount 
+                 = 500000 - 75000
+                 = 425000

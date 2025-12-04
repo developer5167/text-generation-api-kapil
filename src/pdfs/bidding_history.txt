@@ -1,0 +1,39 @@
+1.My bidding history
+A)The subscriber’s auction participation and bid history, including month, chit number, ticket number, auction date, discount amount, and bid payable
+
+
+2.Auction participation history.
+A)Subscribers can participate in auctions, and bidding occurs from the start to the end of each auction.
+
+
+3.Won auctions list
+A)In chits, the “won auctions list” records subscribers who have received the chit money by winning the auction.
+
+
+4.Past bid amounts
+A)In chits, “past bid amounts” are the discounts or rebates offered by subscribers in previous auctions to win the chit money.
+
+
+5.Bidding track record
+A)Subscriber “bidding track record” refers to the history of all bids a subscriber placed in past auctions, showing the discounts or rebates they offered.
+
+
+
+6.Historical bids
+A)“historical bids” refers to the record of all bids placed by subscribers in previous auctions, showing the discounts or rebates offered over time.
+
+
+7.My auction performance
+A)“my auction performance” refers to a subscriber’s record of participation and success in auctions, showing how often they won and the bids they offered.
+
+
+8.Which auctions did I win?
+A)Subscribers can identify the auctions they have won as successful bidders.
+
+
+9.My past bids
+A)“Subscriber past bids” refers to the offers or amounts a subscriber has previously placed on items in auctions.
+
+
+10.Previous bidding record
+A)“Previous bidding record” means: a history or log of all the bids a subscriber has made in past auctions, including amounts and items bid on.

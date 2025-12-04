@@ -1,0 +1,38 @@
+1.What is the best bidding strategy?
+A)1. Conservative Approach
+      Keep your bids low until you genuinely need the money.
+      This strategy maximizes the dividends you collect from other members’ bids
+      I deal if your priority is long-term gain rather than immediate access to the pot.
+
+  2. Aggressive Approach
+       Bid high early if you need the money immediately.
+       Riskier, as it reduces your overall returns from dividends.
+       In the final moments of bidding (last 10 seconds), you can place an aggressive bid, taking advantage of timing to secure the pot as needed.
+
+
+2.When should I bid in auction?
+A)A subscriber may need to lift the chit for that month. As usual, bidding will start at the subscriber’s end; however, the auctioneer can also initiate the auction.
+
+
+
+3.How to win an auction?
+A)When a subscriber needs the amount in a particular month, bidding early is typically for borrowing to meet urgent cash needs, while bidding late is more for investing, aiming to maximize returns or dividends.
+
+4.Tips for successful bidding.
+A)Minimize personal loss by reducing the discount offered.
+  Maximize returns through dividends earned from other subscribers’ discounts.
+  Reduce the risk of losing the bid to another subscriber offering a lower amount.
+
+
+5.How to calculate bid amount?
+A)Chit value = ₹1,00,000
+  Monthly Subscriciptio = ₹10,000
+  Excepted dividend froom previous bids = ₹2000
+  Minimun Acceptable gain = ₹5000
+   
+   Bid Amount = 100000 - (2000 + 5000) = 93000
+ Your offer amount get ₹93000
+
+
+6.Bidding strategies for maximum profit
+A)For maximum profit in a chit fund, the subscriber should wait until the last month to lift the chit, avoiding discounts and earning full dividends.

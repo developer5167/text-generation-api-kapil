@@ -1,0 +1,26 @@
+DIGITAL_SERVICES:
+
+ONLINE_ONBOARDING:
+Feature: Digital registration without branch visits
+Platform: Mobile app and website
+Process: Complete KYC and start investing online
+
+ONLINE_COLLECTIONS:
+Feature: Monthly installment payments from home
+Methods: UPI, Net Banking, Debit Cards
+Schedule: Payments due by 5th of each month
+
+ONLINE_AUCTIONS:
+Feature: Participate in monthly auctions digitally
+Availability: Anytime, anywhere
+Special Note: First chit fund company in India to offer this
+
+ONLINE_SUPPORT:
+Feature: Query and grievance submission
+Response Time: 24-48 hours
+Channels: Website portal, Mobile app, Email
+
+KYC_MANAGEMENT:
+Feature: Update contact and address details online
+Documents: Aadhaar, PAN, address proof updates
+Security: Bank-level encryption

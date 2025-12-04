@@ -28,9 +28,43 @@ function cosineSimilarity(a, b) {
   }
   return dot / (Math.sqrt(normA) * Math.sqrt(normB));
 }
+function hasBothChitDetails(message) {
+  const hasChitNumber = /[A-Z]{2,6}\d{1,4}[A-Z]?-\d{1,3}/.test(message);
 
+  const amountPatterns = [
+    /₹\s*\d{1,3}(?:,\d{3})*(?:\.\d{2})?/,
+    /Rs\.?\s*\d{1,3}(?:,\d{3})*(?:\.\d{2})?/i,
+    /\b\d{1,3}(?:,\d{3})*(?:\.\d{2})?\s*(?:rupees?|RS?\.?)/i,
+    /\b\d{4,}\b/,
+    /amount\s*:?\s*\d{1,3}(?:,\d{3})*(?:\.\d{2})?/i,
+    /chit\s*value\s*:?\s*\d{1,3}(?:,\d{3})*(?:\.\d{2})?/i
+  ];
+
+  const hasAmount = amountPatterns.some(pattern => pattern.test(message));
+
+  console.log("hasBothChitDetails - Amount:", hasAmount, "Chit Number:", hasChitNumber);
+
+  return hasChitNumber && hasAmount;
+}
 // Intent detection using embeddings
-async function detectIntent(question) {
+async function detectIntent(question,userId) {
+  const session = conversationManager.getSession(userId);
+
+  if (session.paymentAwait) {
+
+    // User provided chit number + amount → proceed
+    if (hasBothChitDetails(question)) {
+        return "proceed_payment";
+    }
+
+    // If message clearly looks like payment-related:
+    if (/pay|amount|rupees|₹|rs|chit|ticket|number|due/i.test(question)) {
+        return "please enter both chit number and amount to proceed with payment.";
+    }
+
+    // Otherwise → LET NORMAL INTENTS WORK
+    // Do NOT return anything here — allow normal flow to continue
+}
   const embedder = await pipeline(
     "feature-extraction",
     "Xenova/all-MiniLM-L6-v2"
@@ -71,7 +105,7 @@ async function detectIntent(question) {
 // Main query function
 async function queryNatasha(userId, question) {
   const collection = await getCollection();
-  const intent = await detectIntent(question);
+  const intent = await detectIntent(question,userId);
 
   console.log(
     `\n🔍 Querying knowledge base: ${

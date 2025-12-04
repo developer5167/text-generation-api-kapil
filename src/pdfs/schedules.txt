@@ -1,0 +1,25 @@
+Intent: schedules
+
+
+1.What is the chit fund duration?
+A)The duration of chit funds typically ranges from 10 months to 50 months.
+
+2.How long does a chit group run?
+A)The chit group operates according to the configured duration of the chit in months.
+
+
+3.When does the chit start and end?
+A)The chit start date is determined by the group’s commencement date, and the chit end date is calculated from the group start date based on the chit’s duration.
+
+
+4.Chit fund tenure
+A)Based on the configuraion (like 10 months to 50 months) duration of chit need to select the creating onf
+
+
+5.Group duration period
+A)Based on the chit duration, the system should automatically determine the number of subscribers equal to the number of months.
+
+
+
+6.Start and end dates.
+A)Based on the group’s start and end dates, the system should automatically determine the auction dates.

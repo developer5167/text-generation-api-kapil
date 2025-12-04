@@ -19,7 +19,7 @@ function generateUserId(req) {
 
 app.post("/api/ask-natasha", async (req, res) => {
   try {
-    const { message, mobile } = req.body;
+    let { message, mobile,actionPayload } = req.body;
     const { authorization } = req.headers;
     const token = authorization && authorization.split(" ")[1];
 
@@ -30,9 +30,12 @@ app.post("/api/ask-natasha", async (req, res) => {
     );
 
     if (!message || message.trim() === "") {
+      message = actionPayload.payload.query;
+      if (!message || message.trim() === "") {
       return res.status(400).json({
         error: "Message is required",
       });
+    }
     }
 
     const answer = await queryNatasha(userId, message);
@@ -41,25 +44,36 @@ app.post("/api/ask-natasha", async (req, res) => {
     if (answer.type === "api_intent") {
       const apiAnswer = await handleApiIntent(
         answer.intent,
+        userId,
         mobile,
         token,
         message
       );
       conversationManager.addToHistory(userId, message, answer);
-      const responseHandler = getResponseHandler(answer.intent);
-      const response = responseHandler(message, apiAnswer);
+      // const responseHandler = getResponseHandler(answer.intent);
+      // const response = responseHandler(message, apiAnswer);
       
-      return res.json(response);
+      
+      return res.json(apiAnswer);
     } else {
-      res.json({
-        message: message,
-        answer: answer
-          .replace("The answer is ", "")
-          .replace("Answer: ", "")
-          .replace("The answer is: ", "")
-          .trim(),
-        timestamp: new Date().toISOString(),
-      });
+      res.json(
+        {
+      blocks: [
+        { type: "text", text: answer },
+        // ?{ type: "list", listType: "dues", response },
+      ],
+    }
+      //   {
+      //   message: message,
+      //   answer: answer
+      //     .replace("The answer is ", "")
+      //     .replace("Answer: ", "")
+      //     .replace("The answer is: ", "")
+      //     .trim(),
+      //   timestamp: new Date().toISOString(),
+      // }
+        
+        );
     }
   } catch (err) {
     console.error("❌ Natasha error:", err);

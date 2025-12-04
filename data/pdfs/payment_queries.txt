@@ -1,0 +1,81 @@
+Intent: payment_queries
+
+
+1.How to make payments?
+A)Customer can make payments through mobile apps, the web portal, and web applications.
+
+  Subscriber App:
+  ---------------
+   Joined customers can make payments to My Chits through the Subscriber App.
+   
+   Subscribers can join another chit and make payments using the ‘Join Chit’ option.
+ 
+  Collection App:
+  ---------------
+   Without joining, customers can make payments for new enrollment, and after enrollment, the payments are transferred to the respective Chit Group and AR Group.
+
+   Joined customers can make payments through agents listed in the chit. Agents can make payments on behalf of the selected customer and their related customers.
+
+  Subscriber Portal:
+  ------------------
+   Each subscriber logs in with their mobile number and can make payments through the ‘My Chits’ option.
+   
+   Subscribers can join another chit and make payments using the ‘Join Chit’ option.
+
+
+  Note: Subscriber can make the payments single chit or multiple chit's.
+
+
+
+
+2.What payment methods are accepted?
+A)Cash, online, and QR code payment methods are allowed.
+
+  App's:
+  ------
+   Cash, Online Payment are allowed.
+
+  Subscriber Portal:
+  ------------------
+    Cash Free & world line payment are allowed.
+  
+  Web Application:
+  ----------------
+    Cash, Bank(Cheque, Online, Debit & Credit) type of methods are allowed.
+
+
+
+3.What happens if I miss a payment?
+A)Interest will be generated based on the due date if a payment is missed.
+
+
+4.Is there late payment fee?
+A)Late fee payments will incur interest calculated based on the number of days delayed.
+
+
+5.How to pay online?
+A) 
+  App's:
+  ------
+   Make the online payments in my chits, join chits & enroll chits.
+
+ Subscriber Portal:
+ ------------------
+  Make payments on my chits, join chits through cash free or world line.
+
+
+
+6.What is the installment amount?
+A)The fixed sum of money that a subscriber or borrower pays at regular intervals (such as monthly) toward a chit fund, loan, or any financial plan until the total amount is paid off.
+
+
+7.Can I pay in advance?
+A)Subscriber can advance amount.(Make the 3 months future due it's allows on advance)
+
+
+
+8.Payment due dates
+A)make the payment due dates arrive minimum 10 days to 20 days grace period. 
+
+9.Automatic payment options
+A)Subscribers can make automatic payments on the web portal and mobile app through Cashfree or Worldline.

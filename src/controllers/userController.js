@@ -9,27 +9,52 @@ const configManager = require("../enableAwait");
 const GetSubscriberdues = async (mobile, token) => {
     const response = await userService.GetSubscriberdues(mobile, token);
     const formattedMessage = formatDueDetails(response.slice(0, 1)); // Show only first 3 due details
+    return {
+      blocks: [
+        { type: "text", text: "Your Dues" },
+        { type: "list", listType: "dues", response },
+      ],
+    };
     return formattedMessage;
 };
 const GetChitDetails = async (mobile, token) => {
     const response = await userService.GetChitDetails(mobile, token);
     const formattedMessage = formatChitDetails(response.slice(0, 2)); // Show only first 2 chit details
+    return {
+      blocks: [
+        { type: "text", text: "Your Chits" },
+        { type: "list", listType: "chits", response },
+      ],
+    };
     return formattedMessage;
 };
 const DoPayment = async (mobile, token) => {
   const duesList = await userService.GetSubscriberdues(mobile, token);
   const formattedMessage = formatForPayChitDue(duesList.slice(0, 1)); // Show only first 1 due
-    return formattedMessage;
+  return {
+      blocks: [
+        { type: "text", text: "Your Dues" },
+        { type: "list", listType: "dues", duesList },
+      ],
+    };
 }; 
-const payDueAmount = async (mobile, token,chitNumber,amount) => {
+const payDueAmount = async (mobile, token,chitNumber,amount,userId) => {
   const duesList = await userService.GetSubscriberdues(mobile, token);
   const findingDue = duesList.find(due => due.pchitno === chitNumber && due.pnetpayable >= amount);
   if (!findingDue) {
-    configManager.setEnablePaymentAwait(false);
-    return `Either the chit number ${chitNumber} is invalid or the amount ₹${amount} exceeds the net payable amount. Please check and try again.`;
+    configManager.setEnablePaymentAwait(userId,false);
+    return {
+      blocks: [
+        { type: "text", text: `Either the chit number ${chitNumber} is invalid or the amount ₹${amount} exceeds the net payable amount. Please check and try again.` },
+      ],
+    };
   }else{
-    configManager.setEnablePaymentAwait(false);
-    return `Payment of ₹${amount} for chit number ${chitNumber} has been successfully processed.`;
+    configManager.setEnablePaymentAwait(userId,false);
+    return {
+      blocks: [
+        { type: "text", text: `Payment of ₹${amount} for chit number ${chitNumber} has been successfully processed.` },
+      ],
+    };
   }
 };
 const findTransactions = async (groupcodetickectno, token) => {
@@ -38,8 +63,14 @@ const findTransactions = async (groupcodetickectno, token) => {
     return `No transactions found for group code ${groupcodetickectno}. Please check the group code and try again.`;
   }
   configManager.set('payment.transactions', false);
-  const formattedMessage = formatTransactionDetails(duesList.lstSubscribertransDTO); // Show only first 5 dues
-  return formattedMessage;
+
+  const formattedMessage = formatTransactionDetails(duesList.lstSubscribertransDTO);// Show only first 5 dues
+
+   return {
+      blocks: [
+        { type: "text", text: formattedMessage },
+      ],
+    };
 };
 const findAuctions = async (mobile, token) => {
   const duesList = await userService.GetAuctionDetails(mobile, token);
@@ -48,7 +79,12 @@ const findAuctions = async (mobile, token) => {
   if(duesList.length===0){
     return `All caught up!, there are no upcoming auctions at the moment. Please check back later.`;
   }
-  return duesList;
+   return {
+      blocks: [
+        { type: "text", text: "Upcoming Auctions:" },
+        { type: "list", listType: "auctions", duesList },
+      ],
+    };
 };
 module.exports = {
   GetSubscriberdues,

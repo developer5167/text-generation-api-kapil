@@ -1,0 +1,47 @@
+1.Show my upcoming auctions
+A)Details of upcoming auctions, whether based on the regular schedule or auto-scheduled, are displayed in the “Upcoming Auctions” section.
+
+
+
+2.When is my next auction?
+A)If a subscriber participates in the auction in a given month, they will not be able to lift the chit for that month. They will, however, be eligible to participate in the auction in the following month.
+
+
+3.What chits are going for auction?
+A)Since the subscriber has paid all previous installments, those chits are now eligible for auction.
+
+
+4.Auction schedule for my chits.
+A)The subscriber wishes to participate in the auctions for the 1st and 2nd month schedules. Based on the 2nd auction, subsequent auctions will be automatically rescheduled on a monthly basis.
+
+
+
+5.Next auction dates.
+A)Based on previous auciton dates, automatiocally refelceted on next auciton date.
+
+
+
+6.My chits auction calendar.
+A)Auction Calendar for My Chit Fund Contributions
+
+Yes! I can create a clear and organized Chit Fund Auction Calendar for you. Here’s a sample format you could use:
+
+  | Month    | Installment Number | Auction Date | Notes/Status     |
+| -------- | ------------------ | ------------ | ---------------- |
+| January  | 1                  | [Date]       | Paid / Scheduled |
+| February | 2                  | [Date]       | Paid / Scheduled |
+| March    | 3                  | [Date]       | Upcoming         |
+| April    | 4                  | [Date]       | Upcoming         |
+| May      | 5                  | [Date]       | Upcoming         |
+
+
+
+
+
+7.When is auction for my group?
+A)Upcoming auctions are displayed for subscribers. If a subscriber has cleared all due payments, they will be allowed to participate in the upcoming bidding.
+
+
+
+8.Auction timetable.
+A)Auctions determine the prized subscriber for each installment. This timetable is typically provided directly by the chit fund company to its subscribers. Through this schedule, subscribers can view upcoming auction dates, past auction results, payment histories, and receive timely updates.
