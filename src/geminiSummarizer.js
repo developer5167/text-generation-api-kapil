@@ -1,68 +1,3 @@
-// const { GoogleGenerativeAI } = require("@google/generative-ai");
-// require("dotenv").config();
-
-// class GeminiSummarizer {
-//   constructor() {
-//     // ✅ SIMPLE - Just API key
-//     this.genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-//     this.model = this.genAI.getGenerativeModel({ 
-//       model: "gemini-2.5-flash-lite",
-      
-//     });
-//   }
-
-//   async summarizeAccurate(context, question) {
-//     const prompt = `
-// Natasha/Kapil Chits assistant. Use only context.
-
-// Context: ${context}
-
-// Q: ${question}
-
-// A:`;
-
-//     try {
-//       const result = await this.model.generateContent(prompt);
-//       let answer = result.response.text();
-      
-//       // Post-process for accuracy
-//       answer = this.validateAndClean(answer, context);
-//       return answer;
-      
-//     } catch (error) {
-//       console.error("❌ Gemini error:", error);
-//       return this.getFallbackResponse(question);
-//     }
-//   }
-
-//   validateAndClean(answer, context) {
-//     const genericPatterns = [
-//       "I understand you're asking",
-//       "Based on general knowledge",
-//       "Typically, chit funds",
-//       "In most cases"
-//     ];
-    
-//     for (const pattern of genericPatterns) {
-//       if (answer.includes(pattern)) {
-//         return "I don't have specific information about that in my knowledge base. Please contact our customer care for accurate details.";
-//       }
-//     }
-    
-//     return answer;
-//   }
-
-//   getFallbackResponse(question) {
-//     if (question.includes('contact') || question.includes('number')) {
-//       return "Please contact Kapil Chits customer care at 1800-123-4343 for assistance.";
-//     }
-//     return "I apologize, I'm having trouble accessing that information right now. Please try again or contact customer care.";
-//   }
-// }
-
-// module.exports = GeminiSummarizer;
-
-
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const conversationManager = require('./conversationManager');
@@ -71,7 +6,7 @@ require("dotenv").config();
 class GeminiSummarizer {
   constructor() {
     this.genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    this.modelName = "gemini-2.0-flash-lite"; // Using your model
+    this.modelName = "gemini-2.5-flash-light"; // Using your model
   }
 
   async summarizeWithContext(userId, context, question) {

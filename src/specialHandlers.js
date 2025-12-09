@@ -12,6 +12,8 @@ class SpecialHandler {
 
 function registerSpecialHandler(handler) {
   specialHandlers.push(handler);
+  console.log("specialHandlers:"+specialHandlers);
+  
 }
 
 function processSpecialHandlers(question) {

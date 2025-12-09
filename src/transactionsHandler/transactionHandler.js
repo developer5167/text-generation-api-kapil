@@ -9,7 +9,7 @@ class TransactionHandler extends SpecialHandler {
     if (hasChitNumber(question)) {
       return "findTransactions";
     } else {
-      return "please enter both chit number and amount to proceed with payment.";
+      return "Please enter valid group code to fetch transactions";
     }
   }
 }

@@ -4,7 +4,6 @@ const formatDueDetails = require('../templates/fetchTemplates').formatDueDetails
 const formatChitDetails = require('../templates/fetchTemplates').formatChitDetails;
 const formatForPayChitDue = require('../templates/fetchTemplates').formatForPayChitDue;
 const formatTransactionDetails = require('../templates/fetchTemplates').formatTransactionDetails;
-const configManager = require("../enableAwait");
 
 const GetSubscriberdues = async (mobile, token) => {
     const response = await userService.GetSubscriberdues(mobile, token);
@@ -25,10 +24,8 @@ const payDueAmount = async (mobile, token,chitNumber,amount) => {
   const duesList = await userService.GetSubscriberdues(mobile, token);
   const findingDue = duesList.find(due => due.pchitno === chitNumber && due.pnetpayable >= amount);
   if (!findingDue) {
-    configManager.setEnablePaymentAwait(false);
     return `Either the chit number ${chitNumber} is invalid or the amount ₹${amount} exceeds the net payable amount. Please check and try again.`;
   }else{
-    configManager.setEnablePaymentAwait(false);
     return `Payment of ₹${amount} for chit number ${chitNumber} has been successfully processed.`;
   }
 };
@@ -37,7 +34,6 @@ const findTransactions = async (groupcodetickectno, token) => {
   if(duesList.lstSubscribertransDTO===null || duesList.lstSubscribertransDTO.length===0){
     return `No transactions found for group code ${groupcodetickectno}. Please check the group code and try again.`;
   }
-  configManager.set('payment.transactions', false);
   const formattedMessage = formatTransactionDetails(duesList.lstSubscribertransDTO); // Show only first 5 dues
   return formattedMessage;
 };

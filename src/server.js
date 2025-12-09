@@ -34,6 +34,49 @@ app.post("/api/ask-natasha", async (req, res) => {
         error: "Message is required",
       });
     }
+    // server.js - inside /api/ask-natasha handler, after userId, message, mobile, token prepared
+    const pending = conversationManager.getPendingIntent(userId);
+    if (pending) {
+      // try to extract any of the pending params from the current message
+      const extracted = await require("./slotExtractor").extractSlots(
+        message,
+        pending.requiredParams
+      );
+
+      // if any param found, update pending
+      if (Object.keys(extracted).length > 0) {
+        const updated = conversationManager.updatePendingCollected(
+          userId,
+          extracted
+        );
+
+        // if now complete -> execute API and return result to user
+        if (conversationManager.isPendingComplete(userId)) {
+          // call intent handler uniformly
+          const collected = updated.collectedParams;
+          // run the same handleApiIntent flow you already have
+          const apiOutput = await require("./intentHandlers").handleApiIntent(
+            pending.intentName,
+            mobile,
+            token,
+            message,
+            collected
+          );
+
+          conversationManager.clearPendingIntent(userId);
+          conversationManager.addToHistory(userId, message, apiOutput);
+
+          return res.json({
+            message: message,
+            answer: apiOutput,
+            timestamp: new Date().toISOString(),
+          }); // this is the only early return for pending flows
+        }
+        // otherwise: user provided some param but still missing others.
+        // Do NOT return here — continue to NORMAL NATASHA flow below.
+      }
+      // user didn't provide any pending param — do NOT return; continue normal flow.
+    }
 
     const answer = await queryNatasha(userId, message);
 
@@ -48,7 +91,7 @@ app.post("/api/ask-natasha", async (req, res) => {
       conversationManager.addToHistory(userId, message, answer);
       const responseHandler = getResponseHandler(answer.intent);
       const response = responseHandler(message, apiAnswer);
-      
+
       return res.json(response);
     } else {
       res.json({

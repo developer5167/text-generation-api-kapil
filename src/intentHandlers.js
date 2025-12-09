@@ -5,14 +5,14 @@ const {
   DoPayment,
   payDueAmount,
   findTransactions,
-  findAuctions
+  findAuctions,
 } = require("./controllers/userController");
-const configManager = require("./enableAwait");
+const conversationManager = require("./conversationManager");
 // Registry of all API-based intent handlers
 const intentHandlers = {
   subscriber_dues: {
     requiresAuth: true,
-    handler: async (mobile, token, message) => {
+    handler: async (mobile, token, message, collected = {}) => {
       return await GetSubscriberdues(mobile, token);
     },
     authMessage:
@@ -21,7 +21,7 @@ const intentHandlers = {
 
   chit_details: {
     requiresAuth: true,
-    handler: async (mobile, token, message) => {
+    handler: async (mobile, token, message, collected = {}) => {
       return await GetChitDetails(mobile, token);
     },
     authMessage:
@@ -29,31 +29,44 @@ const intentHandlers = {
   },
   do_payment: {
     requiresAuth: true,
-    handler: async (mobile, token, message) => {
-      configManager.setEnablePaymentAwait(true);
-      if (!extractChitNumber(message) || !extractAmount(message)) {
+    handler: async (mobile, token, message, collected = {}) => {
+      const chit = collected.chit_number || extractChitNumber(message);
+      const amount = collected.amount || extractAmount(message);
+      if (!chit || !amount) {
+        conversationManager.setPendingIntent(mobile, {
+          intentName: "do_payment",
+          requiredParams: ["chit_number", "amount"], // canonical param names you choose
+          collectedParams: {},
+          createdAt: Date.now(),
+          expiresAt: Date.now() + 1000 * 60 * 30, // 30 minutes
+        });
         return "To process your payment, please provide the chit number and the amount you wish to pay.";
       }
-      return await payDueAmount(
-        mobile,
-        token,
-        extractChitNumber(message),
-        extractAmount(message)
-      );
+      return await payDueAmount(mobile, token, chit, amount);
     },
     authMessage:
       "Please login with a valid mobile number to proceed with the payment.",
   },
   transactions: {
     requiresAuth: true,
-    handler: async (mobile, token, message) => {
+    handler: async (mobile, token, message, collected = {}) => {
       console.log(extractChitNumber(message));
-      if (!validateChitNumber(extractChitNumber(message))) {
-        console.log(validateChitNumber(extractChitNumber(message)));
-        configManager.set('payment.transactions', true);
+      const chit =
+        collected.group_code ||
+        collected.chit_number ||
+        extractChitNumber(message);
+
+      if (!chit) {
+        conversationManager.setPendingIntent(mobile, {
+          intentName: "transactions",
+          requiredParams: ["group_code"], // canonical param names you choose
+          collectedParams: {},
+          createdAt: Date.now(),
+          expiresAt: Date.now() + 1000 * 60 * 30, // 30 minutes
+        });
         return "To check transactions, please provide the valid group code.";
-      }else{
-        return await findTransactions(extractChitNumber(message), token);
+      } else {
+        return await findTransactions(chit, token);
       }
     },
     authMessage:
@@ -61,21 +74,24 @@ const intentHandlers = {
   },
   findTransactions: {
     requiresAuth: true,
-    handler: async (mobile, token,message) => {
+    handler: async (mobile, token, message, collected = {}) => {
       console.log(message);
+      const chit =
+        collected.group_code ||
+        collected.chit_number ||
+        extractChitNumber(message);
       console.log(extractChitNumber(message));
-      if (!validateChitNumber(extractChitNumber(message))) {
-        console.log(validateChitNumber(extractChitNumber(message)));
+      if (!validateChitNumber(chit)) {
         return "To check transactions, please provide the valid group code.";
       }
-      return await findTransactions(extractChitNumber(message), token);
+      return await findTransactions(chit, token);
     },
     authMessage:
       "Please login with a valid mobile number to proceed with the payment.",
   },
   upcoming_auctions: {
     requiresAuth: true,
-    handler: async (mobile, token,message) => {
+    handler: async (mobile, token, message, collected = {}) => {
       console.log(message);
       return await findAuctions(mobile, token);
     },
@@ -84,20 +100,28 @@ const intentHandlers = {
   },
   proceed_payment: {
     requiresAuth: true,
-    handler: async (mobile, token, message) => {
-      if (!extractChitNumber(message) || !extractAmount(message)) {
+    handler: async (mobile, token, message, collected = {}) => {
+      const chit = collected.chit_number || extractChitNumber(message);
+      const amount = collected.amount || extractAmount(message);
+        if (!chit || !amount) {
+        conversationManager.setPendingIntent(mobile, {
+          intentName: "proceed_payment",
+          requiredParams: ["chit_number", "amount"], // canonical param names you choose
+          collectedParams: {},
+          createdAt: Date.now(),
+          expiresAt: Date.now() + 1000 * 60 * 30, // 30 minutes
+        });
         return "To process your payment, please provide the chit number and the amount you wish to pay.";
       }
       return await payDueAmount(
         mobile,
         token,
-        extractChitNumber(message),
-        extractAmount(message)
+        chit,
+        amount
       );
     },
     authMessage:
       "Please login with a valid mobile number to proceed with the payment.",
-
   },
 
   // Add new intents here - NO CODE CHANGES NEEDED ELSEWHERE
@@ -117,7 +141,13 @@ function isApiIntent(intent) {
 }
 
 // Handle API intent uniformly
-async function handleApiIntent(intent, mobile, token, message) {
+async function handleApiIntent(
+  intent,
+  mobile,
+  token,
+  message,
+  collectedParams = {}
+) {
   const handlerConfig = intentHandlers[intent];
 
   if (!handlerConfig) {
@@ -128,7 +158,7 @@ async function handleApiIntent(intent, mobile, token, message) {
   if (handlerConfig.requiresAuth && (!mobile || !mobile.trim() || !token)) {
     return handlerConfig.authMessage;
   }
-  return await handlerConfig.handler(mobile, token, message);
+  return await handlerConfig.handler(mobile, token, message, collectedParams);
 }
 
 function extractAmount(message) {
@@ -138,28 +168,45 @@ function extractAmount(message) {
   const amountPatterns = [
     // Pattern 1: ₹ symbol with optional spaces
     { pattern: /₹\s*(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/, group: 1 },
-    
+
     // Pattern 2: Rs or Rs. with optional spaces
     { pattern: /Rs\.?\s*(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/i, group: 1 },
-    
+
     // Pattern 3: Amount labeled with currency
-    { pattern: /amount\s*:?\s*₹?\s*(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/i, group: 1 },
-    
+    {
+      pattern: /amount\s*:?\s*₹?\s*(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/i,
+      group: 1,
+    },
+
     // Pattern 4: Chit value labeled
-    { pattern: /chit\s*value\s*:?\s*₹?\s*(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/i, group: 1 },
-    
+    {
+      pattern: /chit\s*value\s*:?\s*₹?\s*(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/i,
+      group: 1,
+    },
+
     // Pattern 5: Rupees mentioned after number
-    { pattern: /(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)\s*(?:rupees?|RS?\.?)/i, group: 1 },
-    
+    {
+      pattern: /(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)\s*(?:rupees?|RS?\.?)/i,
+      group: 1,
+    },
+
     // Pattern 6: Pay/paid amount patterns
-    { pattern: /pay\s*(?:amount)?\s*:?\s*₹?\s*(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/i, group: 1 },
-    { pattern: /paid?\s*(?:amount)?\s*:?\s*₹?\s*(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/i, group: 1 },
-    
+    {
+      pattern:
+        /pay\s*(?:amount)?\s*:?\s*₹?\s*(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/i,
+      group: 1,
+    },
+    {
+      pattern:
+        /paid?\s*(?:amount)?\s*:?\s*₹?\s*(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/i,
+      group: 1,
+    },
+
     // Pattern 7: Numbers with "amount" context nearby
     { pattern: /(\d{4,})\s*(?=\s*(?:rupees?|amount|pay|₹|Rs\.?))/i, group: 1 },
-    
+
     // Pattern 8: Standalone large numbers (4+ digits) - broader range
-    { pattern: /\b(\d{4,6})\b/, group: 1 }
+    { pattern: /\b(\d{4,6})\b/, group: 1 },
   ];
 
   // Try each pattern in order
@@ -168,7 +215,7 @@ function extractAmount(message) {
     if (match && match[group]) {
       const amountStr = match[group].replace(/,/g, "");
       const amount = parseFloat(amountStr);
-      
+
       if (!isNaN(amount) && amount > 0) {
         // Validate amount range for chit payments
         if (amount >= 100 && amount <= 1000000) {
@@ -197,5 +244,7 @@ function extractAmount(message) {
 module.exports = {
   intentHandlers,
   isApiIntent,
+  extractChitNumber,
+  extractAmount,
   handleApiIntent,
 };

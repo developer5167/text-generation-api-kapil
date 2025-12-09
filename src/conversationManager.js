@@ -12,7 +12,9 @@ class ConversationManager {
     if (!this.sessions.has(userId)) {
       this.sessions.set(userId, {
         userId,
-        context: {},
+        context: {
+          
+        },
         history: [],
         lastActive: Date.now(),
         createdAt: Date.now()
@@ -66,6 +68,60 @@ class ConversationManager {
   clearSession(userId) {
     this.sessions.delete(userId);
   }
+  setFlag(userId, key, value) {
+  const session = this.getSession(userId);
+  session.context[key] = value;
+}
+
+  getFlag(userId, key) {
+  const session = this.getSession(userId);
+  return session.context[key];
+}
+
+clearFlag(userId, key) {
+  const session = this.getSession(userId);
+  delete session.context[key];
+}
+setPendingIntent(userId, pendingIntent) {
+  const session = this.getSession(userId);
+  session.context = session.context || {};
+  session.context.pendingIntent = pendingIntent;
+}
+
+// get the pending intent or null
+getPendingIntent(userId) {
+  const session = this.getSession(userId);
+  return session.context && session.context.pendingIntent ? session.context.pendingIntent : null;
+}
+
+// update collected params (merge)
+updatePendingCollected(userId, newParams = {}) {
+  const pending = this.getPendingIntent(userId);
+  if (!pending) return null;
+  pending.collectedParams = { ...(pending.collectedParams || {}), ...newParams };
+  return pending;
+}
+
+// check whether all required params are present
+isPendingComplete(userId) {
+  const pending = this.getPendingIntent(userId);
+  if (!pending) return false;
+  for (const p of pending.requiredParams || []) {
+    if (!pending.collectedParams || pending.collectedParams[p] == null) return false;
+  }
+  return true;
+}
+
+// clear pending intent
+clearPendingIntent(userId) {
+  const session = this.getSession(userId);
+  if (session && session.context) delete session.context.pendingIntent;
+}
+markPendingExecuting(userId) {
+  const p = this.getPendingIntent(userId);
+  if (p) p.status = 'executing';
+}
+
 }
 
 module.exports = new ConversationManager();
